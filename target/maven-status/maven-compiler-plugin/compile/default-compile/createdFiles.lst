@@ -1,0 +1,8 @@
+co\ims\soa\ejbs\RolEJB.class
+co\ims\soa\modelo\Persona.class
+co\ims\soa\ejbs\PersonaEJB.class
+co\ims\soa\config\RestConfiguracion.class
+co\ims\soa\modelo\Auditoria.class
+co\ims\soa\ejbs\UsuarioEJB.class
+co\ims\soa\modelo\Usuario.class
+co\ims\soa\modelo\Rol.class
