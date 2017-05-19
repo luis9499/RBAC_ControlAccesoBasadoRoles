@@ -41,9 +41,9 @@ public class Auditoria implements Serializable {
     private Date fechaCaducidad;
     @Column(name = "estado")
     private Boolean estado;
-    
+    //constructor por defecto
     public Auditoria(){}
-    
+    //constructor con parametros
     public Auditoria(String usuario, Date fechaCambio, Date fechaCaducidad, Boolean estado){
         this.usuario = usuario;
         this.fechaCambio = fechaCambio;
