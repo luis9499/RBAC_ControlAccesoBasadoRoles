@@ -14,15 +14,12 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -42,19 +39,14 @@ public class Usuario implements Serializable {
     @Column(name = "pass")
     private String pass;
     
-    @JoinTable(name = "persona", joinColumns = {
-        @JoinColumn(name = "idPersona", referencedColumnName = "idPersona")}, inverseJoinColumns = {
-        @JoinColumn(name = "idPersona", referencedColumnName = "idPersona")})
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idPersona")
-    private Collection<Persona> personaCollection;
+    @OneToOne
+    @JoinColumn(name = "id_persona")
+    private Persona persona;
     
-    @JoinTable(name = "rol", joinColumns = {
-        @JoinColumn(name = "idRol", referencedColumnName = "idRol")}, inverseJoinColumns = {
-        @JoinColumn(name = "idRol", referencedColumnName = "idRol")})
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idRol")
-    private Collection<Rol> rolCollection;
+    @JoinTable(name = "usuario_rol", 
+        joinColumns = @JoinColumn(name = "id_usuario"),
+        inverseJoinColumns = @JoinColumn(name = "id_rol"))    
+    private Collection<Rol> roles;
     
     public Usuario(){}
     
@@ -78,22 +70,4 @@ public class Usuario implements Serializable {
     public void setPass(String pass) {
         this.pass = pass;
     }
-
-    @XmlTransient
-    public Collection<Persona> getPersonaCollection() {
-        return personaCollection;
-    }
-
-    public void setPersonaCollection(Collection<Persona> personaCollection) {
-        this.personaCollection = personaCollection;
-    }
-    @XmlTransient
-    public Collection<Rol> getRolCollection() {
-        return rolCollection;
-    }
-
-    public void setRolCollection(Collection<Rol> rolCollection) {
-        this.rolCollection = rolCollection;
-    }
-    
 }

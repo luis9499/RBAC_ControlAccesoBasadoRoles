@@ -10,17 +10,11 @@
 package co.ims.soa.modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToOne;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -40,13 +34,6 @@ public class Persona implements Serializable {
     private String nombre;
     @Column(name = "identificacion")
     private String identificacion;
-
-    @JoinTable(name = "usuario", joinColumns = {
-        @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")}, inverseJoinColumns = {
-        @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")})
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idUsuario")
-    private Collection<Usuario> usuarioCollection;
 
     public Persona() {
     }
@@ -79,14 +66,4 @@ public class Persona implements Serializable {
     public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
     }
-
-    @XmlTransient
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
-    }
-
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
-    }
-
 }

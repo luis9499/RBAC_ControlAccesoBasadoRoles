@@ -11,17 +11,11 @@
 package co.ims.soa.modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,13 +32,6 @@ public class Rol implements Serializable {
     @Column(name = "descRol")
     private String descRol;
     
-    @JoinTable(name = "usuario", joinColumns = {
-        @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")}, inverseJoinColumns = {
-        @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")})
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idUsuario")
-    private Collection<Usuario> usuarioRolCollection;
-    
     public Rol(){}
     
     public Rol(String descRol){
@@ -58,15 +45,4 @@ public class Rol implements Serializable {
     public void setDescRol(String descRol) {
         this.descRol = descRol;
     }
-
-    @XmlTransient
-    public Collection<Usuario> getUsuarioRolCollection() {
-        return usuarioRolCollection;
-    }
-
-    public void setUsuarioCollection(Collection<Usuario> usuarioRolCollection) {
-        this.usuarioRolCollection = usuarioRolCollection;
-    }
-
-    
 }
