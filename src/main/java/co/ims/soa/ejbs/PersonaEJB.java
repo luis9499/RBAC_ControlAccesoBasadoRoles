@@ -33,9 +33,10 @@ public class PersonaEJB {
     protected EntityManager em;
     
     @GET
-    @Path("idPersona")
+    @Path("{idPersona}")
     @Produces("application/json")
     public Persona buscar(@PathParam("idPersona") Integer perIdPersona){
+        System.out.println("GET-PERSONA");
         return em.find(Persona.class, perIdPersona);
     }
     
