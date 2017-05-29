@@ -33,7 +33,7 @@ public class UsuarioEJB {
     protected EntityManager em;
     
     @GET
-    @Path("idUsuario")
+    @Path("{idUsuario}")
     @Produces("application/json")
     public Usuario buscar(@PathParam("idUsuario") Integer usIdUsuario){
         return em.find(Usuario.class, usIdUsuario);

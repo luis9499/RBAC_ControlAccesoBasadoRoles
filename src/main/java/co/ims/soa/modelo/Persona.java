@@ -26,8 +26,7 @@ public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idPersona")
     private Integer idPersona;
     @Column(name = "nombre")
@@ -35,19 +34,19 @@ public class Persona implements Serializable {
     @Column(name = "identificacion")
     private String identificacion;
 
-    public Persona() {
-    }
-
     public Persona(String nombre, String identificacion) {
         this.nombre = nombre;
         this.identificacion = identificacion;
     }
+    
+    public Persona() {
+    }
 
-    public Integer getId_Persona() {
+    public Integer getIdPersona() {
         return idPersona;
     }
 
-    public void setId_Persona(Integer idPersona) {
+    public void setIdPersona(Integer idPersona) {
         this.idPersona = idPersona;
     }
 

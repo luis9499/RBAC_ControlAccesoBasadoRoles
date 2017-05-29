@@ -11,7 +11,7 @@
 package co.ims.soa.modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +46,7 @@ public class Usuario implements Serializable {
     @JoinTable(name = "usuario_rol", 
         joinColumns = @JoinColumn(name = "id_usuario"),
         inverseJoinColumns = @JoinColumn(name = "id_rol"))    
-    private Collection<Rol> roles;
+    private List<Rol> roles;
     
     public Usuario(){}
     
