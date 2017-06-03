@@ -41,8 +41,8 @@ public class PersonaEJB {
     
     @Inject UsuarioEJB usuarioEJB;
     
-    public void crearUsuario(Persona p, String usuario, String pass){
-        Usuario u = new Usuario(pass, pass);
+    public void crearUsuario(Persona p, String login, String pass){
+        Usuario u = new Usuario(p, login, pass);
         usuarioEJB.agregar(u);
     }
 

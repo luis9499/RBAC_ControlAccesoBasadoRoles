@@ -50,7 +50,8 @@ public class Usuario implements Serializable {
     
     public Usuario(){}
     
-    public Usuario(String login, String pass){
+    public Usuario(Persona p, String login, String pass){
+        this.persona = p;
         this.login = login;
         this.pass = pass;
     }

@@ -30,6 +30,9 @@ public class PersonaBean {
 
     private List<Persona> personas;
     private Persona persona;
+    private Persona seleccionada;
+
+    
 
     public PersonaBean() {
     }
@@ -38,12 +41,20 @@ public class PersonaBean {
     public void init() {
         personas = personaEJB.buscarTodos();
         persona = new Persona();
+        seleccionada = new Persona();
+        seleccionada.setNombre("Pruebas");
     }
 
     public String guardar() {
         System.out.println("guardar...");
         personaEJB.agregar(persona);
         init();
+        return null;
+    }
+    public String buscarPersona(){
+        System.out.println("buscar...");
+        System.out.println(persona.getIdPersona());
+        seleccionada = personaEJB.buscar(persona.getIdPersona());
         return null;
     }
 
@@ -61,5 +72,12 @@ public class PersonaBean {
 
     public void setPersona(Persona persona) {
         this.persona = persona;
+    }
+    public Persona getSeleccionada() {
+        return seleccionada;
+    }
+
+    public void setSeleccionada(Persona seleccionada) {
+        this.seleccionada = seleccionada;
     }
 }

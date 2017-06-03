@@ -6,10 +6,9 @@
         <title>Ingreso persona JSF</title>
     </h:head>
 
-     <h:body>
+    <h:body>
         <h1> Personas </h1>
         <h:form>
-            
             <p:dataTable id="personas" var="p" value="#{personaBean.personas}">
                 <p:column headerText="Id">
                     <h:outputText value="#{p.idPersona}" />
@@ -22,9 +21,9 @@
                 <p:column headerText="Identificacion">
                     <h:outputText value="#{p.identificacion}" />
                 </p:column>               
-                
+
             </p:dataTable> 
-            
+
             <br />
             <p:fieldset legend="Agregar" toggleable="true" toggleSpeed="500" style="width: 40%">
                 <h:panelGrid columns="2">
@@ -33,13 +32,27 @@
 
                     <h:outputLabel value="Identificacion"/>
                     <h:inputText value="#{personaBean.persona.identificacion}" />
-                    
-                    
+
+
                     <h:outputLabel value=""/>
                     <p:commandButton value="Guardar" action="#{personaBean.guardar}" update="@form"/>                 
                 </h:panelGrid>
-            </p:fieldset>           
-        </h:form>
+            </p:fieldset>
+            <p:fieldset legend="Buscar" toggleSpeed="500" style="width: 40%">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Id Persona: "/>
+                    <h:inputText value="#{personaBean.persona.idPersona}"  />
 
+                    <h:outputLabel value=""/>
+                    <p:commandButton value="Buscar" action="#{personaBean.buscarPersona}" update="@form"/>
+                    
+                    <h:outputLabel value="Nombre:"/>
+                    <h:outputText value="#{personaBean.seleccionada.nombre}"  />
+                    <h:outputLabel value="Identificación:"/>
+                    <h:outputText value="#{personaBean.seleccionada.identificacion}"  />
+                </h:panelGrid>
+            </p:fieldset>
+            
+        </h:form>
     </h:body>
 </html>
