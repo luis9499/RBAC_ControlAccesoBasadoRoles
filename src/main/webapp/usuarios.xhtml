@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Ingreso usuario JSF</title>
+    </h:head>
+    <h:body>
+        <h1>Usuarios</h1>
+        <h:form>
+            <p:dataTable id="usuarios" var="u" value="#{usuarioBean.usuarios}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{u.idUsuario}" />
+                </p:column>
+
+                <p:column headerText="Login">
+                    <h:outputText value="#{u.login}" />
+                </p:column>
+
+                <p:column headerText="Pass">
+                    <h:outputText value="#{u.pass}" />
+                </p:column>
+                
+                <p:column headerText="IdPersona">
+                    <h:outputText value="#{u.persona.idPersona}" />
+                </p:column>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{u.persona.nombre}" />
+                </p:column>
+                <p:column headerText="Identificacion">
+                    <h:outputText value="#{u.persona.identificacion}" />
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>

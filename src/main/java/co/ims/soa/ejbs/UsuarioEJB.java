@@ -11,15 +11,20 @@
 package co.ims.soa.ejbs;
 
 import co.ims.soa.modelo.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -31,6 +36,7 @@ import javax.ws.rs.Produces;
 public class UsuarioEJB {
     @PersistenceContext(unitName="co.ims.soa_rbac_war_1.0-SNAPSHOTPU")
     protected EntityManager em;
+    private Object Renponse;
     
     @GET
     @Path("{idUsuario}")
@@ -47,4 +53,33 @@ public class UsuarioEJB {
         em.flush();
         return entity;
     }
+    
+    @DELETE
+    @Path("idUsuario")
+    @Produces("application/json")
+    public Response eliminarUsuario(@PathParam("idUsuario")Integer uIdUsuario){
+        Usuario us = em.find(Usuario.class, uIdUsuario);
+        if(us!=null){
+        em.remove(us);
+        }
+        return Response.noContent().build();
+    }
+    
+    @POST
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Usuario actualizarUsuario(Usuario u){
+        em.merge(u);
+        return u;
+    }
+    
+    @GET
+    @Produces("application/json")
+    public List<Usuario> buscarUsuarios(){
+        String jpql = "SELECT usua FROM Usuario usua";
+        TypedQuery<Usuario> q = em.createQuery(jpql, Usuario.class);
+        List<Usuario> resultado = q.getResultList();
+        return resultado;
+    }
+    
 }
