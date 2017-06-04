@@ -32,6 +32,24 @@
                 </p:column>
 
             </p:dataTable>
+            
+            <br />
+            <p:fieldset legend="Agregar" toggleable="true" toggleSpeed="500" style="width: 40%">
+                <h:panelGrid columns="3">
+                    <br />
+                    <h:outputLabel value="Login: "/>
+                    <h:inputText value="#{usuarioBean.usuario.login}"  />
+                    <br />
+                    <h:outputLabel value="Contraseña"/>
+                    <h:inputSecret value="#{usuarioBean.usuario.pass}" />
+                    <br />
+                    <h:outputLabel value="IdPersona"/>
+                    <h:inputText value="#{personaBean.persona.idPersona}" />
+                    <br />
+                    <h:outputLabel value=""/>
+                    <p:commandButton value="Guardar" action="#{usuarioBean.guardarUsuario}" update="@form"/>                 
+                </h:panelGrid>
+            </p:fieldset>
         </h:form>
     </h:body>
 </html>

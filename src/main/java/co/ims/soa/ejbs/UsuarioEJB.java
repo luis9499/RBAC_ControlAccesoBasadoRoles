@@ -48,10 +48,10 @@ public class UsuarioEJB {
     @PUT
     @Consumes("application/json")
     @Produces("application/json")
-    public Usuario agregar(Usuario entity){
-        em.persist(entity);
+    public Usuario agregar(Usuario u){
+        em.persist(u);
         em.flush();
-        return entity;
+        return u;
     }
     
     @DELETE

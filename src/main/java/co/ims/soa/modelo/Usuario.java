@@ -20,6 +20,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
+import co.ims.soa.control.Encriptacion;
 
 /**
  *
@@ -85,6 +86,8 @@ public class Usuario implements Serializable {
     }
 
     public void setPass(String pass) {
-        this.pass = pass;
+        if (!pass.isEmpty()) {
+            this.pass = Encriptacion.getStringMessageDigest(pass, Encriptacion.SHA1);
+        }
     }
 }
